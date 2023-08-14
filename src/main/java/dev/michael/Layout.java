@@ -19,7 +19,7 @@ public class Layout extends JFrame implements ActionListener{
         this.getRootPane().setBorder(BorderFactory.createMatteBorder(4,4,4,4, Color.white));
 
         //OKHttp instance
-        OKHttp okHttp = new OKHttp();
+        OkHttp okHttp = new OkHttp();
 
         //JButtons
         JButton prev = new JButton("Prev");

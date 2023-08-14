@@ -1,20 +1,19 @@
 package dev.michael;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
-public class OKHttp {
 
-    public int minusDateCount = 1;
+public class OkHttp {
+
+    private int minusDateCount = 1;
     final ObjectMapper mapper = new ObjectMapper();
     public OkHttpClient client = new OkHttpClient();
     public LocalDateTime ldt = LocalDateTime.now();
@@ -28,7 +27,7 @@ public class OKHttp {
     APOD apod = mapper.readValue(response.body().string(), APOD.class);
 
 
-    public OKHttp() throws IOException {
+    public OkHttp() throws IOException {
     }
 
     public String getHdUrl() {
