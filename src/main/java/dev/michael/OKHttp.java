@@ -1,4 +1,5 @@
 package dev.michael;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -15,7 +16,6 @@ public class OKHttp {
     final ObjectMapper mapper = new ObjectMapper();
     public OkHttpClient client = new OkHttpClient();
     public LocalDateTime ldt = LocalDateTime.now();
-
     public LocalDateTime previousDate = ldt.minusDays(minusDateCount);
 
 
