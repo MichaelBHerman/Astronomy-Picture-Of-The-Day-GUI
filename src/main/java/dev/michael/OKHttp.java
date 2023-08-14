@@ -10,10 +10,14 @@ import java.util.Locale;
 
 
 public class OKHttp {
+
+    public int minusDateCount = 1;
     final ObjectMapper mapper = new ObjectMapper();
     public OkHttpClient client = new OkHttpClient();
     public LocalDateTime ldt = LocalDateTime.now();
-    public int minusDateCount = 1;
+
+    public LocalDateTime previousDate = ldt.minusDays(minusDateCount);
+
 
     Request request = new Request.Builder()
             .url("https://api.nasa.gov/planetary/apod?api_key=Emii5aEQxDLySfoUKSX1XKXTBNiPp5bMXCdeXr5c")
@@ -42,23 +46,20 @@ public class OKHttp {
     }
 
     public String getFormattedPrevDate(LocalDateTime date) {
-
-        LocalDateTime previousDate = date.minusDays(minusDateCount);
+        previousDate = date.minusDays(minusDateCount);
         minusDateCount++;
         return DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)
                 .format(previousDate);
     }
 
     public String getFormattedNextDate(LocalDateTime date) {
-
-        LocalDateTime previousDate = date.minusDays(minusDateCount);
         minusDateCount--;
+        previousDate = date.minusDays(minusDateCount);
         return DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)
                 .format(previousDate);
     }
     //TODO: refactor this so that it concatenates the correct method depending on next or previous button press
     public String[] getPrevDateData() throws IOException {
-        //local date time
 
         String dateRequest = "https://api.nasa.gov/planetary/apod?&api_key=Emii5aEQxDLySfoUKSX1XKXTBNiPp5bMXCdeXr5c&date=" + getFormattedPrevDate(ldt);
         Request request = new Request.Builder()
@@ -75,7 +76,6 @@ public class OKHttp {
     }
 
     public String[] getNextDateData() throws IOException {
-        //local date time
 
         String dateRequest = "https://api.nasa.gov/planetary/apod?&api_key=Emii5aEQxDLySfoUKSX1XKXTBNiPp5bMXCdeXr5c&date=" + getFormattedNextDate(ldt);
         Request request = new Request.Builder()
