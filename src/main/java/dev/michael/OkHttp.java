@@ -9,8 +9,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-
-
 public class OkHttp {
 
     private int minusDateCount = 1;
@@ -18,7 +16,6 @@ public class OkHttp {
     private final OkHttpClient client = new OkHttpClient();
     private final LocalDateTime ldt = LocalDateTime.now();
     private LocalDateTime previousDate = ldt.minusDays(minusDateCount);
-
 
     private final Request request = new Request.Builder()
             .url("https://api.nasa.gov/planetary/apod?api_key=Emii5aEQxDLySfoUKSX1XKXTBNiPp5bMXCdeXr5c")
@@ -29,6 +26,7 @@ public class OkHttp {
 
     public OkHttp() throws IOException {
     }
+
     public String getHdUrl() {
         return apod.hdUrl;
     }
@@ -58,6 +56,7 @@ public class OkHttp {
         return DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)
                 .format(previousDate);
     }
+
     public String[] getPrevDateData() throws IOException {
 
         String dateRequest = "https://api.nasa.gov/planetary/apod?&api_key=Emii5aEQxDLySfoUKSX1XKXTBNiPp5bMXCdeXr5c&date=" + getFormattedPrevDate(ldt);

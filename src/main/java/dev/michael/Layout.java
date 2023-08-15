@@ -137,8 +137,6 @@ public class Layout extends JFrame implements ActionListener{
                 }
             }
         });
-
-
     }
     public static void main(String[] args) throws IOException {
         Layout layout = new Layout("NASA ASTRONOMY PICTURE OF THE DAY");
