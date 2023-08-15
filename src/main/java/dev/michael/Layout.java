@@ -57,7 +57,7 @@ public class Layout extends JFrame implements ActionListener{
         JLabel label = new JLabel();
         label.setOpaque(true);
         label.setBorder(new LineBorder((nasaRed), 3));
-        label.setBounds(100,100,580,600);
+        label.setBounds(100,100,850,600);
 
         //ImageIcon for APOD
         String apod = okHttp.getHdUrl();
