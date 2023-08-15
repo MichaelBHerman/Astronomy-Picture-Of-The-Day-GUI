@@ -35,7 +35,6 @@ public class Layout extends JFrame implements ActionListener{
         container.setLayout(new BorderLayout(8,6));
         container.setBackground(nasaBlue);
 
-
         //Top Panel
         JPanel topPanel = new JPanel();
         topPanel.setBorder(new LineBorder(Color.white, 3));
@@ -72,7 +71,6 @@ public class Layout extends JFrame implements ActionListener{
         label.setIcon(scaled);
 
         container.add(label);
-
 
         //Bottom Panel
         JPanel bottomPanel = new JPanel();
