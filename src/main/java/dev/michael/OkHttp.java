@@ -11,14 +11,14 @@ import okhttp3.Response;
 
 public class OkHttp {
 
-    private int minusDateCount = 1;
+    private int minusDateCount = 0;
     private final ObjectMapper mapper = new ObjectMapper();
     private final OkHttpClient client = new OkHttpClient();
     private final LocalDateTime ldt = LocalDateTime.now();
     private LocalDateTime previousDate = ldt.minusDays(minusDateCount);
 
     private final Request request = new Request.Builder()
-            .url("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
+            .url("https://api.nasa.gov/planetary/apod?api_key=Emii5aEQxDLySfoUKSX1XKXTBNiPp5bMXCdeXr5c")
             .build(); // defaults to GET
     private final Response response = client.newCall(request).execute();
     private final APOD apod = mapper.readValue(response.body().string(), APOD.class);
@@ -44,8 +44,8 @@ public class OkHttp {
     }
 
     public String getFormattedPrevDate(LocalDateTime date) {
-        previousDate = date.minusDays(minusDateCount);
         minusDateCount++;
+        previousDate = date.minusDays(minusDateCount);
         return DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)
                 .format(previousDate);
     }
@@ -59,7 +59,7 @@ public class OkHttp {
 
     public String[] getPrevDateData() throws IOException {
 
-        String dateRequest = "https://api.nasa.gov/planetary/apod?&api_key=DEMO_KEY&date=" + getFormattedPrevDate(ldt);
+        String dateRequest = "https://api.nasa.gov/planetary/apod?&api_key=Emii5aEQxDLySfoUKSX1XKXTBNiPp5bMXCdeXr5c&date=" + getFormattedPrevDate(ldt);
         Request request = new Request.Builder()
                 .url(dateRequest)
                 .build(); // defaults to GET
@@ -75,7 +75,7 @@ public class OkHttp {
 
     public String[] getNextDateData() throws IOException {
 
-        String dateRequest = "https://api.nasa.gov/planetary/apod?&api_key=DEMO_KEY&date=" + getFormattedNextDate(ldt);
+        String dateRequest = "https://api.nasa.gov/planetary/apod?&api_key=Emii5aEQxDLySfoUKSX1XKXTBNiPp5bMXCdeXr5c&date=" + getFormattedNextDate(ldt);
         Request request = new Request.Builder()
                 .url(dateRequest)
                 .build(); // defaults to GET
