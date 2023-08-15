@@ -20,16 +20,15 @@ public class OkHttp {
     private LocalDateTime previousDate = ldt.minusDays(minusDateCount);
 
 
-    Request request = new Request.Builder()
+    private final Request request = new Request.Builder()
             .url("https://api.nasa.gov/planetary/apod?api_key=Emii5aEQxDLySfoUKSX1XKXTBNiPp5bMXCdeXr5c")
             .build(); // defaults to GET
-    Response response = client.newCall(request).execute();
-    APOD apod = mapper.readValue(response.body().string(), APOD.class);
+    private final Response response = client.newCall(request).execute();
+    private final APOD apod = mapper.readValue(response.body().string(), APOD.class);
 
 
     public OkHttp() throws IOException {
     }
-
     public String getHdUrl() {
         return apod.hdUrl;
     }
