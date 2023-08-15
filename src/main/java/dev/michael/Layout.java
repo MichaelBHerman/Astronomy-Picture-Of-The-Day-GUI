@@ -1,13 +1,14 @@
 package dev.michael;
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import javax.swing.border.LineBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 public class Layout extends JFrame implements ActionListener{
 
@@ -73,7 +74,7 @@ public class Layout extends JFrame implements ActionListener{
         container.add(label);
 
 
-        //Botton Panel
+        //Bottom Panel
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new FlowLayout(3));
 
