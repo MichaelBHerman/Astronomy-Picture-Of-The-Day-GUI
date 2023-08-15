@@ -52,7 +52,13 @@ public class OkHttp {
 
     public String getFormattedNextDate(LocalDateTime date) {
         minusDateCount--;
-        previousDate = date.minusDays(minusDateCount);
+        if (minusDateCount < 0) {
+            System.out.println("You can't browse past today's date!");
+            minusDateCount = 0;
+        }
+        else {
+            previousDate = date.minusDays(minusDateCount);
+        }
         return DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)
                 .format(previousDate);
     }
