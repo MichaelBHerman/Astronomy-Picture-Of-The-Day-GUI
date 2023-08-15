@@ -14,10 +14,10 @@ import okhttp3.Response;
 public class OkHttp {
 
     private int minusDateCount = 1;
-    final ObjectMapper mapper = new ObjectMapper();
-    public OkHttpClient client = new OkHttpClient();
-    public LocalDateTime ldt = LocalDateTime.now();
-    public LocalDateTime previousDate = ldt.minusDays(minusDateCount);
+    private final ObjectMapper mapper = new ObjectMapper();
+    private final OkHttpClient client = new OkHttpClient();
+    private final LocalDateTime ldt = LocalDateTime.now();
+    private LocalDateTime previousDate = ldt.minusDays(minusDateCount);
 
 
     Request request = new Request.Builder()
@@ -59,7 +59,6 @@ public class OkHttp {
         return DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)
                 .format(previousDate);
     }
-    //TODO: refactor this so that it concatenates the correct method depending on next or previous button press
     public String[] getPrevDateData() throws IOException {
 
         String dateRequest = "https://api.nasa.gov/planetary/apod?&api_key=Emii5aEQxDLySfoUKSX1XKXTBNiPp5bMXCdeXr5c&date=" + getFormattedPrevDate(ldt);
