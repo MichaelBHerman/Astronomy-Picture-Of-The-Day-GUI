@@ -19,7 +19,7 @@ public class OkHttp {
 
     private final Request request = new Request.Builder()
             .url("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
-            .build(); // defaults to GET
+            .build();
     private final Response response = client.newCall(request).execute();
     private final APOD apod = mapper.readValue(response.body().string(), APOD.class);
 
@@ -68,7 +68,7 @@ public class OkHttp {
         String dateRequest = "https://api.nasa.gov/planetary/apod?&api_key=DEMO_KEY&date=" + getFormattedPrevDate(ldt);
         Request request = new Request.Builder()
                 .url(dateRequest)
-                .build(); // defaults to GET
+                .build(); 
         Response response = client.newCall(request).execute();
         APOD apod = mapper.readValue(response.body().string(), APOD.class);
         String[] newData = new String[4];
